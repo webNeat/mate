@@ -1,0 +1,32 @@
+{
+  "name": "wn/mate",
+  "description": "Your functional programming helper.",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Amine Ben hammou",
+      "email": "webneat@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Wn\\Mate\\": "src/types/"
+    },
+    "files": [
+      "src/doc.php",
+      "src/mate.php",
+      "src/test.php",
+      "src/files.php",
+      "src/parse.php",
+      "src/common.php",
+      "src/render.php"
+    ]
+  },
+  "require": {
+    "php": ">=7.1",
+    "tarsana/functional": "^2.2",
+    "phpunit/phpunit": "^7.0",
+    "tarsana/command": "^1.2"
+  }
+}

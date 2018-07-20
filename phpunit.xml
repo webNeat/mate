@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.5/phpunit.xsd"
+  backupGlobals="true"
+  backupStaticAttributes="false"
+  bootstrap="vendor/autoload.php"
+  cacheTokens="false"
+  colors="true"
+  convertErrorsToExceptions="true"
+  convertNoticesToExceptions="true"
+  convertWarningsToExceptions="true"
+  forceCoversAnnotation="false"
+  processIsolation="false"
+  verbose="false">
+    <filter>
+      <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">./src/</directory>
+      </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
+    <testsuites>
+        <testsuite name="Mate Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
