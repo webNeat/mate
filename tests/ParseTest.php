@@ -3,7 +3,7 @@ namespace Wn\Mate;
 
 use Tarsana\Functional as F;
 
-class ParseTest extends \PHPUnit\Framework\TestCase
+class ParseTest extends \Wn\Mate\Classes\TestCase
 {
   function test_description_from_lines() {
     $this->assertEquals(description_from_lines([

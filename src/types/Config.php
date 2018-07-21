@@ -20,7 +20,7 @@ class Config {
       'srcDir' => realpath('src'),
       'docsDir' => realpath('docs'),
       'testsDir' => realpath('tests'),
-      'testCaseClass' => '\PHPUnit\Framework\TestCase',
+      'testCaseClass' => '\Wn\Mate\Classes\TestCase',
     ];
   }
 

@@ -1481,16 +1481,16 @@
         },
         {
             "name": "tarsana/functional",
-            "version": "2.2.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tarsana/functional.git",
-                "reference": "24fea9424bf2f6a8525bd66001bfce1076ce1db5"
+                "reference": "77ab9cbe8e44865edb686c07cc0848d8a950ed19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tarsana/functional/zipball/24fea9424bf2f6a8525bd66001bfce1076ce1db5",
-                "reference": "24fea9424bf2f6a8525bd66001bfce1076ce1db5",
+                "url": "https://api.github.com/repos/tarsana/functional/zipball/77ab9cbe8e44865edb686c07cc0848d8a950ed19",
+                "reference": "77ab9cbe8e44865edb686c07cc0848d8a950ed19",
                 "shasum": ""
             },
             "require-dev": {
@@ -1525,7 +1525,7 @@
                 }
             ],
             "description": "functional programming library for PHP",
-            "time": "2018-07-17T21:47:25+00:00"
+            "time": "2018-07-21T01:02:03+00:00"
         },
         {
             "name": "tarsana/io",

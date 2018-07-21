@@ -71,10 +71,3 @@ function codes_from_description(string $description): array {
 function split_code(string $code): array {
   return F\chunks("\"\"''{}[]()", "\n", $code);
 }
-
-function log(string $label) {
-  return function($data) use($label) {
-    echo $label, ': ', json_encode($data), PHP_EOL;
-    return $data;
-  };
-}

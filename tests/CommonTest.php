@@ -3,7 +3,7 @@ namespace Wn\Mate;
 
 use Tarsana\Functional as F;
 
-class CommonTest extends \PHPUnit\Framework\TestCase
+class CommonTest extends \Wn\Mate\Classes\TestCase
 {
   function test_alias() {
     $this->assertEquals(alias('parse_file'), 'Wn\Mate\parse_file');

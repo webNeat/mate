@@ -22,7 +22,6 @@ Functions to parse source files.
 ```php
 function make_module(Module $file) : Module
 ```
-
 Creates a module from a path and source code.
 
 
@@ -30,7 +29,6 @@ Creates a module from a path and source code.
 ```php
 function blocks_from_content(string $content) : array<Block>
 ```
-
 Returns an array of `Block`s from a content.
 
 
@@ -38,7 +36,6 @@ Returns an array of `Block`s from a content.
 ```php
 function comments(string $text) : array
 ```
-
 Gets the list of PHPDoc comments from a source code.
 
 
@@ -46,7 +43,6 @@ Gets the list of PHPDoc comments from a source code.
 ```php
 function block_from_comment(string $comment) : Block
 ```
-
 Parses a comment and returns a Block.
 
 
@@ -54,7 +50,6 @@ Parses a comment and returns a Block.
 ```php
 function lines_of_comment(string $comment) : array<string>
 ```
-
 Gets lines of the content of a comment.
 
 
@@ -62,10 +57,8 @@ Gets lines of the content of a comment.
 ```php
 function description_from_lines(array<string> $lines) : string
 ```
-
 Returns the description text from an array of
 lines by skipping lines which starts with `@`.
-
 ```php
 description_from_lines([
   'First line here',
@@ -81,7 +74,6 @@ description_from_lines([
 ```php
 function tags_from_lines(array<string> $lines) : array<Tag>
 ```
-
 Creates a list of tags from a list of lines by
 skipping lines which does not start by `@`.
 ```php
@@ -104,10 +96,8 @@ tags_from_lines([
 ```php
 function block_maker(array<Tag> $tags) : string
 ```
-
 Gets the `make_{$type}_block` function corresponding
 to the given tags or empty string if none found.
-
 ```php
 block_maker([
   Tag::of('type', 'MyAwesomeType'),
@@ -130,9 +120,7 @@ block_maker([]); //=> alias('make_unknown_block')
 ```php
 function make_type_block(string $description, array $tags) : TypeBlock
 ```
-
 Creates a TypeBlock from the given description and tags.
-
 ```php
 make_type_block('a special type.', [
   Tag::of('type', 'Special'),
@@ -151,7 +139,6 @@ make_type_block('a special type.', [
 ```php
 function make_unknown_block(string $description, array $tags) : UnknownBlock
 ```
-
 Creates an UnknownBlock from the given description and tags.
 
 
@@ -159,9 +146,7 @@ Creates an UnknownBlock from the given description and tags.
 ```php
 function make_function_block(string $description, array $tags) : FunctionBlock
 ```
-
 Creates a FunctionBlock from the given description and tags.
-
 ```php
 make_function_block('a small function.', [
   Tag::of('function', 'do_staff'),
@@ -181,7 +166,6 @@ make_function_block('a small function.', [
 ```php
 function tag_values(string $name, Block $block) : array<Tag>
 ```
-
 Gets array of specific tag values from a block.
 
 
@@ -189,7 +173,6 @@ Gets array of specific tag values from a block.
 ```php
 function make_parameter(string $text) : Parameter
 ```
-
 Creates a Parameter from the content of `@param` or `@field` tags.
 ```php
 make_parameter(' string   $name  ...'); //=> Parameter::of('$name', 'string', '...')
@@ -201,7 +184,6 @@ make_parameter('((int, int): int) $fn '); //=> Parameter::of('$fn', '((int, int)
 ```php
 function tag_from_line(string $line) : Tag
 ```
-
 Converts a comment line `@xxx yyyy` to a
 tag with name `xxx` and content `yyy`.
 ```php
