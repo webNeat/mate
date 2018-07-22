@@ -1,0 +1,7 @@
+{
+  "srcDir": "src",
+  "testsDir": "tests",
+  "docsDir": "docs",
+  "testCaseClass": "\\Wn\\Mate\\Classes\\TestCase",
+  "cachePath": "mate.lock"
+}

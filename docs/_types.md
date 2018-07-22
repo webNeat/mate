@@ -27,7 +27,8 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 {
   string $srcDir,
   string $docsDir,
-  string $testsDir
+  string $testsDir,
+  string $cachePath
 }
 ```
 

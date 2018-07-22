@@ -1,32 +1,5 @@
 #!/usr/bin/env php
 <?php
-namespace Wn\Mate;
-
 require __DIR__.'/../vendor/autoload.php';
 
-use Tarsana\Command\Command;
-
-Command::create()
-  ->name('Mate')
-  ->version('1.0.0-alpha')
-  ->description('Your functional programming helper.')
-  ->syntax('configPath: (string:mate.json)')
-  ->options(['--dont-run-tests', '--watch'])
-  ->describe('configPath', 'Path to the config file')
-  ->describe('--dont-run-tests', "Don't run phpunit after the build")
-  ->describe('--watch', "Watch source files for changes")
-  ->action(function (Command $app) {
-    $configPath = $app->args()->configPath;
-    if ($app->fs()->isFile($configPath)) {
-      $app->console()->line("Using configuration file <info>{$configPath}</info>");
-    } else {
-      $app->console()->line("Using default configuration");
-      $configPath = '';
-    }
-    run(
-      $configPath,
-      !$app->option('--dont-run-tests'),
-      $app->option('--watch')
-    );
-  })
-  ->run();
+(new Wn\Mate\Classes\MateCommand)->run();

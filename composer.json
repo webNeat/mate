@@ -16,9 +16,7 @@
     },
     "files": [
       "src/doc.php",
-      "src/mate.php",
       "src/test.php",
-      "src/files.php",
       "src/parse.php",
       "src/common.php",
       "src/render.php"
