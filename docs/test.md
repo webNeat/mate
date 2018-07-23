@@ -1,7 +1,6 @@
 # test
 
-/**
-*/
+
 
 - [make_test](#make_test)
 
@@ -10,10 +9,7 @@
 ```php
 function make_test(Config $config, Module $module) : Test
 ```
-/**
 Make a `Test` from a module.
-
-*/
 ```php
 $module = Module::of(
  '/path/to/src/awesome-name.php',

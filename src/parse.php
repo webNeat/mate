@@ -52,7 +52,7 @@ function make_module(File $file) {
  */
 function blocks_from_content(string $content): array {
   return F\s($content)
-    ->match("/\s(?:\/\*(?:[^*]|(?:\*[^\/]))*\*\/)\s/")
+    ->match("/\/\*(?:[^*]|(?:\*[^\/]))*\*\//")
     ->map(function($comment) {
       $lines = explode("\n", $comment);
       array_pop($lines);

@@ -14,13 +14,13 @@ class MateTest extends CommandTestCase {
     $this->assertTrue($this->fs->isFile('docs/sample.md'));
 
     $this->assertEquals(
-      file_get_contents(__DIR__.'/examples/sample_test.php'),
-      $this->fs->file('tests/SampleTest.php')->content()
+      trim(file_get_contents(__DIR__.'/examples/sample_test.php')),
+      trim($this->fs->file('tests/SampleTest.php')->content())
     );
 
     $this->assertEquals(
-      file_get_contents(__DIR__.'/examples/sample.md'),
-      $this->fs->file('docs/sample.md')->content()
+      trim(file_get_contents(__DIR__.'/examples/sample.md')),
+      trim($this->fs->file('docs/sample.md')->content())
     );
   }
 

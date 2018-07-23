@@ -81,7 +81,7 @@ class DocTest extends \Wn\Mate\Classes\TestCase
     
     $config->srcDir = '/other/src/path';
     $this->assertThrows(function() use($config, $module) {
-    	make_doc($config, $module); 
+    	make_doc($config, $module);
     },
     "The module path '/path/to/src/awesome-name.php' does not start with the configured source path '/other/src/path', please use a config file to customize this value.");
   }

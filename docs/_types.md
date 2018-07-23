@@ -18,15 +18,11 @@
 - [UnknownBlock](#unknown_block)
 
 # Block
-/**
 One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
-*/
 
 
 # Config
-/**
 
-*/
 ```php
 {
   string $srcDir,
@@ -37,8 +33,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # Doc
-/**
-*/
+
 ```php
 {
   string $path;,
@@ -50,8 +45,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # File
-/**
-*/
+
 ```php
 {
   string $path,
@@ -60,8 +54,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # FunctionBlock
-/**
-*/
+
 ```php
 {
   string $type,
@@ -74,8 +67,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # FunctionDoc
-/**
-*/
+
 ```php
 {
   string $name,
@@ -86,8 +78,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # FunctionTest
-/**
-*/
+
 ```php
 {
   string $name,
@@ -96,8 +87,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # Module
-/**
-*/
+
 ```php
 {
   string $path,
@@ -110,8 +100,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # Parameter
-/**
-*/
+
 ```php
 {
   string $name,
@@ -121,8 +110,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # Tag
-/**
-*/
+
 ```php
 {
   string $name,
@@ -131,8 +119,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # Test
-/**
-*/
+
 ```php
 {
   string $path;,
@@ -146,8 +133,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # TypeBlock
-/**
-*/
+
 ```php
 {
   string $type,
@@ -159,8 +145,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # TypeDoc
-/**
-*/
+
 ```php
 {
   string $name,
@@ -170,8 +155,7 @@ One of `FunctionBlock`, `TypeBlock` or `UnknownBlock`.
 ```
 
 # UnknownBlock
-/**
-*/
+
 ```php
 {
   string $type,

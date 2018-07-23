@@ -1,8 +1,9 @@
 <?php
 namespace Wn\Mate\Classes;
 
-use Tarsana\Command\Command;
 use Tarsana\IO\Interfaces\Filesystem\Directory;
+use Tarsana\Command\Command;
+use Tarsana\Functional as F;
 use Wn\Mate as M;
 
 class MateCommand extends Command {
@@ -15,25 +16,35 @@ class MateCommand extends Command {
     $this
       ->name('Mate')
       ->version('1.0.0-alpha')
-      ->description('Your functional programming helper.')
+      ->description('a tool to generate documentation and tests from PHPDoc comments.')
       ->syntax('configPath: (string:mate.json)')
-      ->options(['--dont-run-tests', '--watch', '--no-cache'])
+      ->options(['--dont-run-tests', '--watch', '--no-cache', '--no-tests', '--no-docs'])
       ->describe('configPath', 'Path to the config file.')
       ->describe('--dont-run-tests', "Don't run phpunit after the build.")
       ->describe('--watch', "Watch source files for changes.")
-      ->describe('--no-cache', "Don't use cache. Please don't combine this option with --watch.")
+      ->describe('--no-cache', "Don't use cache. Should not be combined with --watch.")
+      ->describe('--no-tests', "Don't generate test files.")
+      ->describe('--no-docs', "Don't generate documentation files.")
       ->configPaths([__DIR__ . '/../../mate.json', 'mate.json']);
   }
 
   protected function initConfig() {
     $data = $this->config();
-    $this->fs->dir($data['testsDir'], true);
-    $this->fs->dir($data['docsDir'], true);
+    if (! $this->option('--no-tests')) {
+      $this->fs->dir($data['testsDir'], true);
+    }
+    if (! $this->option('--no-docs')) {
+      $this->fs->dir($data['docsDir'], true);
+    }
     $this->config = M\Config::of($data);
     return $this;
   }
 
   protected function loadCache() {
+    if ($this->option('--no-cache')) {
+      $this->cache = ['files' => [], 'modules' => []];
+      return $this;
+    }
     $cachePath = $this->config->cachePath;
     $this->cache = $this->fs->isFile($cachePath)
       ? json_decode($this->fs->file($cachePath)->content(), true)
@@ -122,10 +133,12 @@ class MateCommand extends Command {
       }
     }
     $this->writeTypes($types);
-    if (! $this->option('--no-cache'))
+    if (! $this->option('--no-cache')) {
       $this->saveCache();
-    if (! $this->option('--dont-run-tests') && $runTests)
+    }
+    if (! $this->option('--dont-run-tests') && $runTests) {
       $this->runTests();
+    }
   }
 
   protected function runTests() {
@@ -139,19 +152,24 @@ class MateCommand extends Command {
   }
 
   protected function build(M\Module $module) {
-    if (!empty($module->functions)) {
+    if (!$this->option('--no-tests') && !empty($module->functions)) {
       $test = M\make_test($this->config, $module);
       $this->fs->file($test->path, true)->content(M\render_test($test));
     }
 
-    if (!empty($module->functions)) {
+    if (!$this->option('--no-docs') && !empty($module->functions)) {
       $doc = M\make_doc($this->config, $module);
       $this->fs->file($doc->path, true)->content(M\render_doc($doc));
     }
   }
 
   protected function writeTypes(array $types) {
-    if (empty($types)) return;
+    if ($this->option('--no-docs') || empty($types)) {
+      return;
+    }
+    usort($types, function($a, $b) {
+      return strcmp($a->name, $b->name);
+    });
     $path = $this->config->srcDir . '/_types.php';
     $module = M\Module::of($path, '', '', [], $types, []);
     $hash = $this->hashModule($module);

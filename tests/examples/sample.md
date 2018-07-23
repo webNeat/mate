@@ -1,9 +1,7 @@
 # sample
 
-/**
 This is a source file to test the Mate command.
 it contains some random functions and types definitions.
-*/
 
 - [add](#add)
 
@@ -12,9 +10,7 @@ it contains some random functions and types definitions.
 ```php
 function add(int|float $x, int|float $y) : int|float
 ```
-/**
 Adds two numbers.
-*/
 ```php
 add(5, 2); //=> 7
 add(0, 1); //=> 1

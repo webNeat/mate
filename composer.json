@@ -1,6 +1,6 @@
 {
   "name": "wn/mate",
-  "description": "Your functional programming helper.",
+  "description": "A tool to generate documentation and tests from PHPDoc comments.",
   "type": "library",
   "license": "MIT",
   "authors": [

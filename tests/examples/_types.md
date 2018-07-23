@@ -5,10 +5,8 @@
 - [Developer](#developer)
 
 # Developer
-/**
 Represents a developer.
 
-*/
 ```php
 {
   string $name,
