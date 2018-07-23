@@ -100,12 +100,13 @@ class MateCommand extends Command {
         ->loadCache()
         ->loadPaths();
       $this->firstRun = true;
+      $this->generate();
+      $this->firstRun = false;
       if ($this->option('--watch'))
         while (true) {
           $this->generate();
           sleep(1);
         }
-      $this->generate();
     } catch(\Exception $e) {
       $this->console->line($e->getMessage());
       $this->console->line($e->getTraceAsString());
