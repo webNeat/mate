@@ -1437,16 +1437,16 @@
         },
         {
             "name": "tarsana/command",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tarsana/command.git",
-                "reference": "f93915281617e7370ad02485b4e5a546d9c9f091"
+                "reference": "a6c4db92bac9e134cdcac06c6f4f937898768eca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tarsana/command/zipball/f93915281617e7370ad02485b4e5a546d9c9f091",
-                "reference": "f93915281617e7370ad02485b4e5a546d9c9f091",
+                "url": "https://api.github.com/repos/tarsana/command/zipball/a6c4db92bac9e134cdcac06c6f4f937898768eca",
+                "reference": "a6c4db92bac9e134cdcac06c6f4f937898768eca",
                 "shasum": ""
             },
             "require": {
@@ -1477,7 +1477,7 @@
                 }
             ],
             "description": "A framework to build command line applications and share them with the world",
-            "time": "2017-09-14T02:53:12+00:00"
+            "time": "2018-07-23T03:09:27+00:00"
         },
         {
             "name": "tarsana/functional",
