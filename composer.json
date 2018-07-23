@@ -9,6 +9,7 @@
       "email": "webneat@gmail.com"
     }
   ],
+  "bin": ["bin/mate"],
   "autoload": {
     "psr-4": {
       "Wn\\Mate\\": "src/types/",
