@@ -26,8 +26,7 @@ use Tarsana\Functional as F;
  *      [
  *        Parameter::of('$name', 'string', ''),
  *        Parameter::of('$age', 'int', '')
- *      ],
- *      []
+ *      ]
  *    )
  *  ],
  *  [
@@ -37,8 +36,7 @@ use Tarsana\Functional as F;
  *      [
  *        Parameter::of('$person', 'Person', ''),
  *      ],
- *      'Person',
- *      []
+ *      'Person'
  *    )
  *  ]
  * );
@@ -143,5 +141,5 @@ function make_throw_assertion(string $fn, string $msg): string {
   $use = '';
   if (count($vars) > 0)
     $use = 'use(' . F\join(', ', $vars) . ') ';
-  return "\$this->assertThrows(function() {$use}{\n\t{$fn}; \n},\n{$msg});";
+  return "\$this->assertThrows(function() {$use}{\n\t{$fn};\n},\n{$msg});";
 }

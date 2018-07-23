@@ -1,6 +1,7 @@
 # doc
 
-
+/**
+*/
 
 - [make_doc](#make_doc)
 
@@ -9,7 +10,10 @@
 ```php
 function make_doc(Config $config, Module $module, bool $withTypes) : Doc
 ```
+/**
 Make a `Doc` from a module.
+
+*/
 ```php
 $module = Module::of(
  '/path/to/src/awesome-name.php',
@@ -26,8 +30,7 @@ $module = Module::of(
      [
        Parameter::of('$name', 'string', ''),
        Parameter::of('$age', 'int', '')
-     ],
-     []
+     ]
    )
  ],
  [
@@ -37,8 +40,7 @@ $module = Module::of(
      [
        Parameter::of('$person', 'Person', ''),
      ],
-     'Person',
-     []
+     'Person'
    )
  ]
 );

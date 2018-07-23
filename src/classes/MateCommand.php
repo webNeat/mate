@@ -7,6 +7,7 @@ use Wn\Mate as M;
 
 class MateCommand extends Command {
 
+  protected $firstRun;
   protected $cache;
   protected $paths;
 
@@ -16,15 +17,12 @@ class MateCommand extends Command {
       ->version('1.0.0-alpha')
       ->description('Your functional programming helper.')
       ->syntax('configPath: (string:mate.json)')
-      ->options(['--dont-run-tests', '--watch'])
-      ->describe('configPath', 'Path to the config file')
-      ->describe('--dont-run-tests', "Don't run phpunit after the build")
-      ->describe('--watch', "Watch source files for changes")
-      ->configPaths([__DIR__ . '/../../mate.json', 'mate.json'])
-      ->templatesPath(__DIR__ . '/../../templates')
-      ->initConfig()
-      ->loadCache()
-      ->loadPaths();
+      ->options(['--dont-run-tests', '--watch', '--no-cache'])
+      ->describe('configPath', 'Path to the config file.')
+      ->describe('--dont-run-tests', "Don't run phpunit after the build.")
+      ->describe('--watch', "Watch source files for changes.")
+      ->describe('--no-cache', "Don't use cache. Please don't combine this option with --watch.")
+      ->configPaths([__DIR__ . '/../../mate.json', 'mate.json']);
   }
 
   protected function initConfig() {
@@ -71,6 +69,10 @@ class MateCommand extends Command {
     $changedFiles = [];
     foreach ($this->paths as $path) {
       $content = $this->fs->file($path)->content();
+      if ($this->firstRun || $this->option('--no-cache')) {
+        $changedFiles[] = M\File::of($path, $content);
+        continue;
+      }
       $hash = hash('adler32', $content);
       if (empty($this->cache['files'][$path]) || $hash != $this->cache['files'][$path]) {
         $this->cache['files'][$path] = $hash;
@@ -82,6 +84,11 @@ class MateCommand extends Command {
 
   protected function execute() {
     try {
+      $this
+        ->initConfig()
+        ->loadCache()
+        ->loadPaths();
+      $this->firstRun = true;
       if ($this->option('--watch'))
         while (true) {
           $this->generate();
@@ -102,16 +109,21 @@ class MateCommand extends Command {
       $module = M\make_module($file);
       if ($module) {
         $types = array_merge($types, $module->types);
-        $hash = $this->hashModule($module);
-        $missing = empty($this->cache['modules'][$module->path]);
-        if ($missing || $this->cache['modules'][$module->path] != $hash) {
-          $this->cache['modules'][$module->path] = $hash;
+        if ($this->option('--no-cache'))
           $this->build($module);
+        else {
+          $hash = $this->hashModule($module);
+          $missing = empty($this->cache['modules'][$module->path]);
+          if ($missing || $this->cache['modules'][$module->path] != $hash) {
+            $this->cache['modules'][$module->path] = $hash;
+            $this->build($module);
+          }
         }
       }
     }
     $this->writeTypes($types);
-    $this->saveCache();
+    if (! $this->option('--no-cache'))
+      $this->saveCache();
     if (! $this->option('--dont-run-tests') && $runTests)
       $this->runTests();
   }

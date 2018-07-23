@@ -9,7 +9,7 @@ namespace Wn\Mate;
  * @field string $description
  * @field array<Parameter> $args
  * @field string $returnType
- * @field array<Tag> $tags
+ * @field object<array<string>> $tags
  */
 class FunctionBlock extends Block {
   public $type = 'function';
@@ -22,14 +22,14 @@ class FunctionBlock extends Block {
     string $description,
      array $args,
     string $returnType,
-     array $tags
+     $tags = null
   ): FunctionBlock {
     $data = new FunctionBlock;
     $data->name = $name;
     $data->description = $description;
     $data->args = $args;
     $data->returnType = $returnType;
-    $data->tags = $tags;
+    $data->tags = $tags ?: new \stdClass;
     return $data;
   }
 }

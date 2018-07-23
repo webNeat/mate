@@ -16,7 +16,7 @@ class File {
     string $content
   ): File {
     $data = new File;
-    $data->path = realpath($path);
+    $data->path = $path;
     $data->content = $content;
     return $data;
   }

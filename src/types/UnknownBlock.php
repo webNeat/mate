@@ -8,16 +8,16 @@ namespace Wn\Mate;
  * @field string $name
  * @field string $description
  * @field array<Parameter> $fields
- * @field array<Tag> $tags
+ * @field object<array<string>> $tags
  */
 class UnknownBlock extends Block {
   public static function of(
     string $description,
-     array $tags
+     $tags = null
   ): UnknownBlock {
     $data = new UnknownBlock;
     $data->description = $description;
-    $data->tags = $tags;
+    $data->tags = $tags ?: new \stdClass;
     return $data;
   }
 }

@@ -21,8 +21,7 @@ class TestTest extends \Wn\Mate\Classes\TestCase
          [
            Parameter::of('$name', 'string', ''),
            Parameter::of('$age', 'int', '')
-         ],
-         []
+         ]
        )
      ],
      [
@@ -32,8 +31,7 @@ class TestTest extends \Wn\Mate\Classes\TestCase
          [
            Parameter::of('$person', 'Person', ''),
          ],
-         'Person',
-         []
+         'Person'
        )
      ]
     );

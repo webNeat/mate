@@ -26,8 +26,7 @@ use Tarsana\Functional as F;
  *      [
  *        Parameter::of('$name', 'string', ''),
  *        Parameter::of('$age', 'int', '')
- *      ],
- *      []
+ *      ]
  *    )
  *  ],
  *  [
@@ -37,8 +36,7 @@ use Tarsana\Functional as F;
  *      [
  *        Parameter::of('$person', 'Person', ''),
  *      ],
- *      'Person',
- *      []
+ *      'Person'
  *    )
  *  ]
  * );

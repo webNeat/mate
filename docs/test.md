@@ -1,6 +1,7 @@
 # test
 
-
+/**
+*/
 
 - [make_test](#make_test)
 
@@ -9,7 +10,10 @@
 ```php
 function make_test(Config $config, Module $module) : Test
 ```
+/**
 Make a `Test` from a module.
+
+*/
 ```php
 $module = Module::of(
  '/path/to/src/awesome-name.php',
@@ -26,8 +30,7 @@ $module = Module::of(
      [
        Parameter::of('$name', 'string', ''),
        Parameter::of('$age', 'int', '')
-     ],
-     []
+     ]
    )
  ],
  [
@@ -37,8 +40,7 @@ $module = Module::of(
      [
        Parameter::of('$person', 'Person', ''),
      ],
-     'Person',
-     []
+     'Person'
    )
  ]
 );
