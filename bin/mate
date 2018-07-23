@@ -1,5 +1,26 @@
 #!/usr/bin/env php
 <?php
-require __DIR__.'/../vendor/autoload.php';
 
+if (version_compare('7.1.0', PHP_VERSION, '>')) {
+  fwrite(STDERR, sprintf(
+    'Mate requires at least PHP 7.1. You are using PHP ' . PHP_VERSION . PHP_EOL
+  ));
+  die(1);
+}
+
+$mate_composer_autoload_file = array_values(array_filter([
+  __DIR__ . '/../../../autoload.php',
+  __DIR__ . '/../autoload.php',
+  __DIR__ . '/vendor/autoload.php'
+], 'file_exists'));
+
+if (empty($mate_composer_autoload_file)) {
+  fwrite(STDERR, sprintf(
+    'Mate should be installed via Composer; learn more on https://getcomposer.org/' . PHP_EOL
+  ));
+  die(1);
+}
+
+require $mate_composer_autoload_file[0];
+unset($mate_composer_autoload_file);
 (new Wn\Mate\Classes\MateCommand)->run();
